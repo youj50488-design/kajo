@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>專屬小問題</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff0f5;
+    font-family: sans-serif;
+  }
+  .card {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 85%;
+    max-width: 320px;
+  }
+  h2 {
+    color: #ff4d79;
+    margin-top: 0;
+  }
+  input {
+    width: 90%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 2px solid #ffb3c6;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+  }
+  button {
+    background-color: #ff4d79;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  #result {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d6336c;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <!-- 第一步：詢問是不是寶寶 -->
+  <div id="step1">
+    <h2>你是我寶寶嗎？</h2>
+    <button onclick="nextStep()">是</button>
+    <button onclick="nextStep()">不是</button>
+  </div>
+
+  <!-- 第二步：正中央輸入名字 -->
+  <div id="step2" style="display: none;">
+    <h2>你是誰？</h2>
+    <input type="text" id="nameInput" placeholder="請輸入你的名字">
+    <br>
+    <button onclick="showLove()">送出</button>
+  </div>
+
+  <!-- 第三步：顯示最後訊息 -->
+  <div id="result" style="display: none;"></div>
+</div>
+
+<script>
+  function nextStep() {
+    document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "block";
+  }
+
+  function showLove() {
+    let name = document.getElementById("nameInput").value.trim();
+    if (!name) {
+      alert("請先輸入名字喔！");
+      return;
+    }
+    document.getElementById("step2").style.display = "none";
+    let resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = name + "，我愛你💕💕<br>!";
+    resultDiv.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
